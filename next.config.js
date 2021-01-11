@@ -1,6 +1,9 @@
-// next.config.js
-const withSass = require('@zeit/next-sass');
-module.exports = withSass({
-  /* config options here */
-  cssModules: true
-});
+// // next.config.js
+const path = require('path');
+const withImages = require('next-images')
+module.exports = withImages({
+  exclude: path.resolve(__dirname, 'src/assets/svg'),
+  webpack(config, options) {
+    return config
+  }
+})

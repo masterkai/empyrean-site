@@ -1,23 +1,25 @@
 {
-  "name": "empyrean-site",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "nextjs",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "clsx": "latest",
+    "next": "latest",
+    "next-images": "^1.6.2",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "sass": "^1.32.2",
+    "swiper": "^6.4.5"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
-    "breakpoint-sass": "^2.7.1",
-    "next": "^10.0.5",
-    "node-sass": "^5.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+  "devDependencies": {
+    "@material-ui/icons": "^4.11.2"
   }
 }
