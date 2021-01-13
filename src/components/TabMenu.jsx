@@ -1,12 +1,33 @@
 import React from 'react';
-import {Button} from '@material-ui/core';
+import {Button, Menu} from '@material-ui/core';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
+import MuiLink from '@material-ui/core/Link';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={2}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function MenuListComposition({label}) {
+export default function MenuListComposition({label,link}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -53,6 +74,18 @@ export default function MenuListComposition({label}) {
 
     prevOpen.current = open;
   }, [open]);
+  if(link) {
+    return (
+      <Button
+        color='inherit'
+        target="_blank"
+        className={classes.menu}
+        href={link}
+      >
+        {label}
+      </Button>
+    )
+  }
 
   return (
     <>

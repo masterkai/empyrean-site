@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "clsx": "latest",
+    "material-ui-nested-menu-item": "^1.0.2",
     "next": "latest",
     "next-images": "^1.6.2",
     "prop-types": "latest",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   InputBase,
   AppBar,
@@ -14,14 +14,53 @@ import logo from '../../src/assets/Empyrean-logo.svg'
 import Link from '../../src/Link'
 import {UserIcon, SearchIcon} from '../icons/Icons'
 import grey from "@material-ui/core/colors/grey";
-import MenuListComposition from '../components/TabMenu'
+import MegaMenu from '../components/MegaMenu'
 
 const TabsArr = [
-  '品牌代理',
-  '支援服務',
-  '何處購買',
-  '愛克賽事',
-  '5hm1購物中心'
+  {
+    tag: '品牌代理', menu: [{
+      item: 'Suunto', sub: [
+        {
+          item: '產品介紹', sub: [
+            {item: '戶外探索與冒險',sub:[
+                {item: '登山'},
+                {item: '攀岩'},
+                {item: '健行'},
+                {item: '徒步登山越野'},
+              ]},
+            {item: '運動休閒與健走'},
+            {item: '運動鍛鍊與訓練'},
+            {item: '體適能與健身'},
+            {item: '都會生活與健康'},
+            {item: '所有運動'},
+            {item: '配件'},
+          ]
+        },
+        {item: '品牌故事'},
+        {item: '使用小技巧'},
+        {item: '名人榜'},
+        {item: '冒險故事'},
+        {item: '運動知識'},
+      ]
+    }, {item: 'Mio'}, {item: 'ORO'}]
+  },
+  {tag: '支援服務',menu:[
+    {item: '會員中心'},
+    {item: '產品註冊'},
+    {item: '常見問題'},
+    {item: '產品支援',sub:[
+      {item:'Suunto'},
+      {item:'Mio'},
+      {item:'ORO'},
+      ]},
+    {item: '維修申請'},
+    ]},
+  {tag: '何處購買', menu:[
+      {item:'一般通路'},
+      {item:'網際通路'},
+    ]},
+  {tag: '愛克賽事', link: 'https://exercise.empyrean.tw/Exercise_User/'},
+  {tag: '5hm1購物中心', link: 'https://www.5hm1.com.tw/'}
 ]
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -120,13 +159,13 @@ export default function SearchAppBar() {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <Link href='/'>
             <img className={classes.logo} src={logo} alt=""/>
           </Link>
-          <div>
-            {TabsArr.map(tab=><MenuListComposition key={tab} label={tab}/>)}
+          <div className={classes.flexGroup}>
+            {TabsArr.map(tab=><MegaMenu key={tab.tag} label={tab.tag} link={tab.link}/>)}
           </div>
           <div className={classes.flexGroup}>
             <div className={classes.search}>
@@ -176,7 +215,7 @@ export default function SearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-      <div className={classes.offsetHeight} />
+      {/*<div className={classes.offsetHeight}/>*/}
     </>
   );
 }
