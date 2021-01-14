@@ -166,7 +166,7 @@ export default function SearchAppBar() {
             <img className={classes.logo} src={logo} alt=""/>
           </Link>
           <div className={classes.flexGroup}>
-
+              <MegaMenu label={TabsArr[0].tag}/>
           </div>
           <div className={classes.flexGroup}>
             <div className={classes.search}>
