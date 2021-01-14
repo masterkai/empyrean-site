@@ -15,6 +15,7 @@ import Link from '../../src/Link'
 import {UserIcon, SearchIcon} from '../icons/Icons'
 import grey from "@material-ui/core/colors/grey";
 import MegaMenu from '../components/MegaMenu'
+import Button from "@material-ui/core/Button";
 
 const TabsArr = [
   {
@@ -165,7 +166,7 @@ export default function SearchAppBar() {
             <img className={classes.logo} src={logo} alt=""/>
           </Link>
           <div className={classes.flexGroup}>
-            {TabsArr.map(tab=><MegaMenu key={tab.tag} label={tab.tag} link={tab.link}/>)}
+
           </div>
           <div className={classes.flexGroup}>
             <div className={classes.search}>

@@ -37,7 +37,7 @@ export default function CenteredGrid() {
       <Grid container spacing={0}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>
-            <MenuItem className={classes.menuItem} onMouseEnter={handleEnter}>
+            <MenuItem className={classes.menuItem}>
               <ListItemText primary="Suunto"/>
               <ListItemIcon>
                 <ArrowRightIcon/>
