@@ -8,8 +8,8 @@ module.exports = withImages({
   }
 })
 
-module.exports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
-}
+// module.exports = {
+//   sassOptions: {
+//     includePaths: [path.join(__dirname, 'styles')],
+//   },
+// }

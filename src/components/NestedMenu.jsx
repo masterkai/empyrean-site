@@ -27,8 +27,14 @@ const StyledMenu = withStyles({
 
 const useStyles = makeStyles((theme) => ({
   mainNav: {
-    padding: '10px 30px'
+    padding: '10px 30px',
   },
+  menuItem: {
+
+    padding:'20px 60px',
+    fontSize: '1rem',
+    letterSpacing:2
+  }
 }));
 export default function NestedMenu({label, link, menu}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -55,6 +61,7 @@ export default function NestedMenu({label, link, menu}) {
   const handleItemClick = (event) => {
     // setMenuPosition(null);
     setAnchorEl(null);
+    console.log(menuRef.current.getBoundingClientRect());
   };
 
   const handleClose = () => {
@@ -76,6 +83,8 @@ export default function NestedMenu({label, link, menu}) {
   const renderMenu = arr => {
     return arr.map(x => x.sub ? (
       <NestedMenuItem
+        ref = {menuRef}
+        className={classes.menuItem}
         key={x.item}
         label={x.item}
         parentMenuOpen={Boolean(anchorEl)}
@@ -83,7 +92,7 @@ export default function NestedMenu({label, link, menu}) {
       >
         {renderMenu(x.sub)}
       </NestedMenuItem>
-    ) : (<MenuItem key={x.item} onClick={handleItemClick}>{x.item}</MenuItem>))
+    ) : (<MenuItem className={classes.menuItem} key={x.item} onClick={handleItemClick}>{x.item}</MenuItem>))
   }
 
   return (

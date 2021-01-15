@@ -16,6 +16,7 @@ import {UserIcon, SearchIcon} from '../icons/Icons'
 import grey from "@material-ui/core/colors/grey";
 import MegaMenu from '../components/MegaMenu'
 import Button from "@material-ui/core/Button";
+import NestedMenu from "../components/NestedMenu";
 
 const TabsArr = [
   {
@@ -160,13 +161,14 @@ export default function SearchAppBar() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" color='secondary'>
         <Toolbar className={classes.toolbar}>
           <Link href='/'>
             <img className={classes.logo} src={logo} alt=""/>
           </Link>
           <div className={classes.flexGroup}>
-              <MegaMenu label={TabsArr[0].tag}/>
+              {/*<MegaMenu label={TabsArr[0].tag}/>*/}
+            {TabsArr.map(t=>(<NestedMenu key={t.tag} menu={t.menu} link={t.link} label={t.tag}/>))}
           </div>
           <div className={classes.flexGroup}>
             <div className={classes.search}>

@@ -2,53 +2,37 @@ import {createMuiTheme} from '@material-ui/core/styles';
 import {red} from '@material-ui/core/colors';
 
 // Create a theme instance.
-const theme = createMuiTheme({
-  // shadows: ["none"],
-  palette: {
-    primary: {
-      main: '#ffffff',
-      contrastText: '#000000'
+const theme = createMuiTheme(
+  {
+    props: {
+      // Name of the component ⚛️
+      MuiButtonBase: {
+        // The default props to change
+        disableRipple: false, // No more ripple, on the whole application 💣!
+      },
     },
-    secondary: {
-      main: '#B60033',
+    typography: {
+      fontFamily: `"Noto Sans TC","Roboto", "Helvetica", "Arial", sans-serif`,
+      fontWeightLight: 200,
+      fontWeightRegular: 300
     },
-    error: {
-      main: red.A400,
+    palette: {
+      primary: {
+        main: '#B60033',
+        contrastText: '#ffffff',
+      },
+      secondary: {
+        main: '#ffffff',
+        contrastText: '#000000'
+      },
+      error: {
+        main: red.A400,
+      },
+      background: {
+        default: '#fff',
+      },
     },
-    background: {
-      default: '#fff',
-    },
-    grey: {
-      50:'#fafafa',
-      100:
-        '#f5f5f5',
-      200:
-        '#eeeeee',
-      300:
-        '#e0e0e0',
-      400:
-        '#bdbdbd',
-      500:
-      '#9e9e9e',
-      600:
-        '#757575',
-      700:
-        '#616161',
-      800:
-        '#424242',
-      900:
-        '#212121',
-      A100:
-        '#d5d5d5',
-      A200:
-        '#aaaaaa',
-      A400:
-        '#303030',
-      A700:
-        '#616161',
-    }
-
-  },
-});
+  }
+);
 
 export default theme;
