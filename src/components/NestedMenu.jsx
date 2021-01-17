@@ -1,13 +1,14 @@
-import React, {useState, useRef} from "react";
-import {Menu, MenuItem, Typography, Button} from "@material-ui/core";
-
+import React from "react";
+import {Menu, MenuItem, Button} from "@material-ui/core";
 import NestedMenuItem from "material-ui-nested-menu-item";
 import {makeStyles, withStyles} from "@material-ui/core/styles";
+import NextLink from "../Link";
 
 
 const StyledMenu = withStyles({
   paper: {
-    border: '1px solid #d3d4d5',
+    padding: 'none'
+
   },
 })((props) => (
   <Menu
@@ -27,22 +28,31 @@ const StyledMenu = withStyles({
 
 const useStyles = makeStyles((theme) => ({
   mainNav: {
-    padding: '10px 30px',
+    padding: '10px 15px',
+    color: theme.palette.grey[600],
+    fontWeight: 400,
+    letterSpacing: 2,
   },
   menuItem: {
-
-    padding:'20px 60px',
-    fontSize: '1rem',
-    letterSpacing:2
+    color: theme.palette.grey[600],
+    maxWidth: '100%',
+    width: '100%',
+    padding: '20px 60px',
+    fontSize: '.96rem',
+    letterSpacing: 2,
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  itemLink: {
+    color: theme.palette.grey[600],
   }
 }));
-export default function NestedMenu({label, link, menu}) {
+export default function NestedMenu({title, link, sub}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const menuRef = useRef()
   const classes = useStyles()
-  const [menuPosition, setMenuPosition] = useState(null);
 
   const handleClick = (event) => {
+
     if (anchorEl) {
       return;
     }
@@ -61,7 +71,7 @@ export default function NestedMenu({label, link, menu}) {
   const handleItemClick = (event) => {
     // setMenuPosition(null);
     setAnchorEl(null);
-    console.log(menuRef.current.getBoundingClientRect());
+    // console.log(menuRef.current.getBoundingClientRect().bottom);
   };
 
   const handleClose = () => {
@@ -75,34 +85,47 @@ export default function NestedMenu({label, link, menu}) {
         className={classes.mainNav}
         href={link}
       >
-        {label}
+        {title}
       </Button>
     )
   }
 
   const renderMenu = arr => {
-    return arr.map(x => x.sub ? (
+    return arr.map((x,i) => x.sub && x.sub.length > 0 ? (
       <NestedMenuItem
-        ref = {menuRef}
         className={classes.menuItem}
-        key={x.item}
-        label={x.item}
+        key={i}
+        label={x.title}
         parentMenuOpen={Boolean(anchorEl)}
         onClick={handleItemClick}
+        divider
       >
         {renderMenu(x.sub)}
+
       </NestedMenuItem>
-    ) : (<MenuItem className={classes.menuItem} key={x.item} onClick={handleItemClick}>{x.item}</MenuItem>))
+    ) : (
+      <MenuItem
+        key={i}
+        className={classes.menuItem}
+        onClick={handleItemClick}
+        divider
+        children={NextLink}
+        component={NextLink}
+        href='/about'
+        naked
+      >
+        {x.title}
+      </MenuItem>
+    ))
   }
 
   return (
     <>
       <Button
-        ref={menuRef}
         className={classes.mainNav}
         onClick={handleClick}
       >
-        {label}
+        {title}
       </Button>
       <StyledMenu
         id="customized-menu"
@@ -111,7 +134,7 @@ export default function NestedMenu({label, link, menu}) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {menu&&renderMenu(menu)}
+        {sub && renderMenu(sub)}
       </StyledMenu>
       {/*<Menu*/}
       {/*  className={classes.menu}*/}
@@ -120,7 +143,7 @@ export default function NestedMenu({label, link, menu}) {
       {/*  anchorReference="anchorPosition"*/}
       {/*  anchorPosition={menuPosition}*/}
       {/*>*/}
-      {/*  {menu&&renderMenu(menu)}*/}
+      {/*  {sub&&renderMenu(sub)}*/}
       {/*</Menu>*/}
     </>
   );

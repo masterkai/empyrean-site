@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     padding: 0,
-    margin: '0 0 20px 0'
+    margin: '0 0 20px 0',
   },
   listItem: {
     padding: 0,
@@ -47,6 +47,13 @@ const useStyles = makeStyles((theme) => ({
   },
   gridItem: {
     flex: '0 1 calc(16.666667% - 80px)',
+    [theme.breakpoints.down('md')]: {
+      flex: '0 1 calc(16.666667% - 10px)',
+    },
+    [theme.breakpoints.down('xs')]: {
+      flex: '0 1 calc(100% / 3)',
+      textAlign: 'center'
+    },
   }
 }));
 
@@ -55,8 +62,8 @@ export default function Footer() {
   const classes = useStyles();
 
   function renderColumn(arr) {
-    return arr.map(({title, li}) => (
-      <Grid key={title} item xs={2} className={classes.gridItem}>
+    return arr.map(({title, li},index) => (
+      <Grid lg={2} xs={4} key={index} item className={classes.gridItem}>
         <List className={classes.list} component="ul" aria-label="contacts">
           <ListItem className={classes.listTitle}>
             <div className="linkTitle">{title}</div>
@@ -77,27 +84,27 @@ export default function Footer() {
       <div className="footer">
         <Grid container>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <List className={classes.list} component="ul" aria-label="contacts">
               <ListItem className={classes.listItem}>
-                <ListItemText primary="客服諮詢：(02)8219-1889 分機212"/>
+                <ListItemText className={classes.listItemText} secondary="客服諮詢：(02)8219-1889 分機212"/>
               </ListItem>
               <ListItem className={classes.listItem}>
-                <ListItemText primary="週一至週五上午"/>
+                <ListItemText className={classes.listItemText} secondary="週一至週五上午"/>
               </ListItem>
               <ListItem className={classes.listItem}>
-                <ListItemText primary="10:00~12:00 下午 13:00~17:00"/>
+                <ListItemText className={classes.listItemText} secondary="10:00~12:00 下午 13:00~17:00"/>
               </ListItem>
               <ListItem className={classes.listItem}>
-                <ListItemText primary="客服信箱 : service@empyrean.tw"/>
+                <ListItemText className={classes.listItemText} secondary="客服信箱 : service@empyrean.tw"/>
               </ListItem>
               <ListItem className={classes.listItem}>
-                <ListItemText primary="地址：新北市新店區民權路95號6樓"/>
+                <ListItemText className={classes.listItemText} secondary="地址：新北市新店區民權路95號6樓"/>
               </ListItem>
             </List>
 
           </Grid>
-          <Grid item xs={9}>
+          <Grid item md={9} xs={12}>
             <Grid container justify='space-between'>
               {data && renderColumn(data)}
             </Grid>

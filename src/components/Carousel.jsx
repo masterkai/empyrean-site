@@ -1,16 +1,19 @@
 import React from "react";
 // import Swiper core and required components
-import SwiperCore, {Navigation, Pagination, A11y} from 'swiper';
+import SwiperCore, {Navigation, Pagination, A11y, Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import Image from "next/image";
 
 // install Swiper components
-SwiperCore.use([Navigation, Pagination, A11y]);
+SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
 const Carousel = () => {
   return (
     <Swiper
       loop={true}
+      autoplay={{
+        delay: 5000,
+      }}
       spaceBetween={0}
       slidesPerView={1}
       navigation
