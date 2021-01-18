@@ -2,16 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import NextLink from 'next/link';
 import MuiLink from '@material-ui/core/Link';
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
-  const { as, href, ...other } = props;
+  const {as, href, ...other} = props;
 
   return (
     <NextLink href={href} as={as}>
-      <a ref={ref} {...other} />
+      <a style={{'textDecoration': 'none'}} ref={ref} {...other} />
     </NextLink>
   );
 });
@@ -60,4 +60,4 @@ Link.propTypes = {
   prefetch: PropTypes.bool,
 };
 
-export default React.forwardRef((props, ref) => <Link {...props} innerRef={ref} />);
+export default React.forwardRef((props, ref) => <Link {...props} innerRef={ref}/>);

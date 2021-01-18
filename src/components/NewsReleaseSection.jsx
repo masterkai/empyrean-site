@@ -18,10 +18,16 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles(theme=>({
   tab: {
     marginBottom:20,
-    marginTop:90
+    marginTop:90,
+    [theme.breakpoints.down('md')]: {
+      marginTop: theme.spacing(2),
+    },
   },
   media: {
     height: 406,
+    [theme.breakpoints.down('md')]: {
+      height: 406/2,
+    },
   },
 }))
 function a11yProps(index) {
@@ -54,7 +60,7 @@ export default function NewProductInfoSection() {
       </Tabs>
       <TabPanel value={value} index={0}>
         <Grid container spacing={3}>
-          <Grid item xs>
+          <Grid item md={4} xs={12}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -82,7 +88,7 @@ export default function NewProductInfoSection() {
               </CardActions>
             </Card>
           </Grid>
-          <Grid item xs>
+          <Grid item md={4} xs={12}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -110,7 +116,7 @@ export default function NewProductInfoSection() {
               </CardActions>
             </Card>
           </Grid>
-          <Grid item xs>
+          <Grid item md={4} xs={12}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia

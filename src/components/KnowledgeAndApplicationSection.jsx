@@ -5,6 +5,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import Container from "@material-ui/core/Container";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import SectionTitle from "../ui/SectionTitle";
 
 const images = [
   {
@@ -65,6 +66,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
     position: 'relative',
     height: 570,
+    [theme.breakpoints.down('md')]: {
+      width: '100% !important', // Overrides inline-style
+      height: 300,
+    },
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -129,6 +134,9 @@ const useStyles = makeStyles((theme) => ({
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
+    [theme.breakpoints.down('xs')]: {
+      padding: `${theme.spacing(1)}px`,
+    },
   },
   imageMarked: {
     height: 3,
@@ -145,12 +153,7 @@ export default function KnowledgeAndApplicationSection() {
   const classes = useStyles();
   return (
     <>
-      <Box mt={10} mb={4}>
-        <Typography variant="h4" component="h1" gutterBottom align='center'>
-          知識與應用
-        </Typography>
-      </Box>
-
+      <SectionTitle title='知識與應用'/>
       <Grid container spacing={3}>
         {images.map((image) => (
           <Grid key={image.title} item xs={3}>
