@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {InputBase, AppBar, Toolbar, Menu, MenuItem} from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import {fade, makeStyles} from '@material-ui/core/styles';
-import logo from '../../src/assets/Empyrean-logo.svg'
+// import logo from '../../src/assets/Empyrean-logo.svg'
 import NextLink from '../../src/Link'
 import {UserIcon, SearchIcon} from '../icons/Icons'
 import grey from "@material-ui/core/colors/grey";
@@ -125,7 +125,8 @@ export default function SearchAppBar() {
             <SideMenu/>
 
             <NextLink href='/' naked>
-              <img className={classes.logo} src={logo} alt=""/>
+              {/*<div>Empyrean</div>*/}
+              <img className={classes.logo} src='/Empyrean-logo.svg' alt="Empyrean-logo"/>
             </NextLink>
           </div>
           <div className={classes.menuGroup}>

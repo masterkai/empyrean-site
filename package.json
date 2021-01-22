@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
+    "@svgr/webpack": "^5.5.0",
     "breakpoint-sass": "^2.7.1",
     "clsx": "latest",
     "material-ui-nested-menu-item": "^1.0.2",

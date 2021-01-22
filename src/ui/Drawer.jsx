@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import logo from '../../src/assets/Empyrean-logo.svg'
+// import logo from '../../src/assets/Empyrean-logo.svg'
 import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Collapse from '@material-ui/core/Collapse';
@@ -22,6 +22,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from '@material-ui/icons/Menu';
 import {TabsArr} from "../../data/data";
 import {hasChildren} from "../utils/utils";
+import NextLink from "../Link";
 
 const useStyles = makeStyles(theme => ({
   list: {
@@ -121,7 +122,8 @@ export default function EmpyreanDrawer() {
         subheader={
           <ListSubheader className={classes.listSubheader} component="div" id="nested-list-subheader">
             <div className='close'>
-              <img className={classes.logo} src={logo} alt=""/>
+              {/*<div>Empyrean</div>*/}
+              <img className={classes.logo} src='Empyrean-logo.svg' alt="Empyrean"/>
               <CancelIcon onClick={toggleDrawer('left', false)}/>
             </div>
           </ListSubheader>
