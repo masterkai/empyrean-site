@@ -98,7 +98,7 @@ export default function NestedMenu({title, link, sub}) {
         label={x.title}
         parentMenuOpen={Boolean(anchorEl)}
         onClick={handleItemClick}
-        divider
+        // divider
       >
         {renderMenu(x.sub)}
 
@@ -108,7 +108,7 @@ export default function NestedMenu({title, link, sub}) {
         key={i}
         className={classes.menuItem}
         onClick={handleItemClick}
-        divider
+        // divider
         children={NextLink}
         component={NextLink}
         href='/about'
